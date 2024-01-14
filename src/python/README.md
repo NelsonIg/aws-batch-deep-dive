@@ -34,12 +34,12 @@ docker build -t aws-batch-single .
 
 Build for ARM architecture.
 ```bash
-docker buildx build --platform linux/arm64 -t aws-batch-single-arm --load .
+docker build --platform linux/arm64 -t aws-batch-single-arm --load .
 ```
 
-Buil for AMD64 architecture.
+Build for AMD64/x86 architecture.
 ```bash
-docker buildx build --platform linux/amd64 -t aws-batch-single-amd64 --load .
+docker build --platform linux/amd64 -t aws-batch-single-amd64 --load .
 ```
 
 ## RUN DOCKER IMAGE
