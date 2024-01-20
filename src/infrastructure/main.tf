@@ -22,7 +22,7 @@ module "batch_deep_dive" {
     prefix = var.prefix
     security_group_ids = [aws_security_group.this.id]
     subnet_ids = var.subnet_ids
-    bucket_name = "test-nelson-igbokwe"
+    bucket_name = aws_s3_bucket.this.id
 }
 
 resource "aws_security_group" "this" {
@@ -36,4 +36,9 @@ resource "aws_vpc_security_group_egress_rule" "this" {
   ip_protocol = "tcp"
   from_port = 443
   to_port = 443
+}
+
+resource "aws_s3_bucket" "this" {
+  bucket = "${var.prefix}-batch-deep-dive"
+  force_destroy = true
 }
