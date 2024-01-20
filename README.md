@@ -82,25 +82,25 @@ A hands-on dive into AWS Batch.
     ```bash
     aws s3 cp data s3://<bucket_name>/source --recursive
     ```
-5. Submit the job.  
-    You will submit a job to AWS Batch that will run the python script on the data that you have uploaded to S3. After the job has finished, you will find the results in the destination folder in the S3 bucket. The source and destination will be passed as arguments to the job.
+## 5. Run the job
+You will submit a job to AWS Batch that will run the python script on the data that you have uploaded to S3. After the job has finished, you will find the results in the destination folder in the S3 bucket. The source and destination will be passed as arguments to the job.
 
-    5.1 Command to submit the job:
-    ```bash
-    aws batch submit-job --job-name <job-name> --job-queue <job-queue> --job-definition <job-definition> --container-overrides command='["python", "script.py"]' --container-overrides environment='[{name="BUCKET",value="<bucket-name>"},{name=PREFIX,value="source"},{name="OUTPUT_PREFIX",value="output"}]'
-    ```
-    5.2 View the job in the [AWS Batch Console](https://eu-central-1.console.aws.amazon.com/batch/home?region=eu-central-1#/jobs)  
-    5.3. Check the ECS Cluster where the Job is being executed. [ECS Console](https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters). A task will spin up and execute the job.  
-    5.4. Check the S3 bucket for the results. [S3 Console](https://s3.console.aws.amazon.com/s3/home?region=eu-central-1)
+5.1 Command to submit the job:
+```bash
+aws batch submit-job --job-name <job-name> --job-queue <job-queue> --job-definition <job-definition> --container-overrides command='["python", "script.py"]' --container-overrides environment='[{name="BUCKET",value="<bucket-name>"},{name=PREFIX,value="source"},{name="OUTPUT_PREFIX",value="output"}]'
+```
+5.2 View the job in the [AWS Batch Console](https://eu-central-1.console.aws.amazon.com/batch/home?region=eu-central-1#/jobs)  
+5.3. Check the ECS Cluster where the Job is being executed. [ECS Console](https://eu-central-1.console.aws.amazon.com/ecs/home?region=eu-central-1#/clusters). A task will spin up and execute the job.  
+5.4. Check the S3 bucket for the results. [S3 Console](https://s3.console.aws.amazon.com/s3/home?region=eu-central-1)
 
-6. Clean up  
-    Change to the infrastructure directory and run the destroy command.
-    ```bash
-    cd ../infrastructure/  
-    terraform plan -var prefix=<prefix> -var 'subnet_ids=["<subnet-1>", "<subnet-2>"]' -var vpc_id=<vpc-id> -destroy -out tfplan
-    ``````
-    Verify the plan and apply it if it looks good.
-    ```bash
-    terraform apply tfplan
-    ````
+## Clean up  
+Change to the infrastructure directory and run the destroy command.
+```bash
+cd ../infrastructure/  
+terraform plan -var prefix=<prefix> -var 'subnet_ids=["<subnet-1>", "<subnet-2>"]' -var vpc_id=<vpc-id> -destroy -out tfplan
+``````
+Verify the plan and apply it if it looks good.
+```bash
+terraform apply tfplan
+````
 
