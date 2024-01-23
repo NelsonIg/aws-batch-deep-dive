@@ -40,7 +40,7 @@ A hands-on dive into AWS Batch.
 3. Build the docker image and push it to ECR. 
     3.1 Login to ECR
     ```bash
-    aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 266154869614.dkr.ecr.eu-central-1.amazonaws.com
+    aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
     ```
     url is in the form of `<account-id>.dkr.ecr.<region>.amazonaws.com`
     
