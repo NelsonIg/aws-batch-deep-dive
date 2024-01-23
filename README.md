@@ -17,7 +17,7 @@ A hands-on dive into AWS Batch.
     2.2 You need a VPC and Security Groups, take note of the VPC ID and Security Group IDs in order to pass them to the apply command. Use the prefix variable to create custom names for the resources.
     ```bash
     terraform init
-    terraform plan -var prefix=<prefix> -var 'subnet_ids=["<subnet-1>", "<subnet-2>"]' -var vpc_id=<vpc-id> -out tfplan
+    terraform plan -var prefix=<prefix> -var subnet_ids='["<subnet-1>", "<subnet-2>"]' -var vpc_id=<vpc-id> -out tfplan
     ``````
     2.3 Verify the plan and apply it if it looks good.
     Resources that are to be created:
